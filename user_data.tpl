@@ -8,11 +8,11 @@ db_RDS=${db_RDS}
 sudo yum update -y
 sudo yum install -y polkit
 sudo yum install -y git
-sudo git clone https://github.com/amir-akhavans/ecs-project.git
+git clone https://github.com/amir-akhavans/ecs-project.git
 sudo yum install -y htop
-sudo mv ecs-project/* ./
-sudo rm -R ecs-project
-sudo mv ./docker/web/Dockerfile ./
+mv ecs-project/* ./
+
+ mv ./docker/web/Dockerfile ./
 sudo yum install -y docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
