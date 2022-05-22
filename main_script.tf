@@ -205,7 +205,7 @@ resource "aws_instance" "wordpressec2" {
   security_groups = ["${aws_security_group.ec2_allow_rule.id}"]
   # user_data       = data.template_file.user_data.rendered
   # key_name        = aws_key_pair.mykey-pair.id
-  # user_data = data.template_file.user_data.rendered
+  user_data = data.template_file.user_data.rendered
   #babak
   # key_name = var.key_name
   tags = {
