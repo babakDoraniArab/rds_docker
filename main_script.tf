@@ -187,7 +187,7 @@ resource "aws_db_instance" "wordpressdb" {
 # }
 data "template_file" "user_data" {
   # template = file("./user_data.tpl")
-  template = "${file("./user_data.tpl")}"
+  template = file("./user_data.tpl")
   vars = {
     db_username      = var.MYSQL_USERNAME
     db_user_password = var.MYSQL_PASSWORD
@@ -195,12 +195,7 @@ data "template_file" "user_data" {
     db_RDS           = aws_db_instance.wordpressdb.endpoint
   }
 }
-data "template_file" "init" {
-  template = "${file("${path.module}/init.tpl")}"
-  vars = {
-    consul_address = "${aws_instance.consul.private_ip}"
-  }
-}
+
 
 # Create EC2 ( only after RDS is provisioned)
 resource "aws_instance" "wordpressec2" {
