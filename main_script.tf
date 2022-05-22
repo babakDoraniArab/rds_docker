@@ -207,7 +207,7 @@ resource "aws_instance" "wordpressec2" {
   # key_name        = aws_key_pair.mykey-pair.id
   # user_data = data.template_file.user_data.rendered
   #babak
-  key_name = var.key_name
+  # key_name = var.key_name
   tags = {
     Name = "Wordpress.web"
   }
