@@ -8,7 +8,7 @@ db_RDS=${db_RDS}
 sudo yum update -y
 sudo yum install -y polkit
 sudo yum install -y git
-git clone https://github.com/amir-akhavans/ecs-project.git
+git clone git@github.com/amir-akhavans/ecs-project.git
 sudo yum install -y htop
 mv ecs-project/* ./
 
