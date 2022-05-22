@@ -186,12 +186,19 @@ resource "aws_db_instance" "wordpressdb" {
 #   }
 # }
 data "template_file" "user_data" {
-  template = file("./user_data.tpl")
+  # template = file("./user_data.tpl")
+  template = "${file("./user_data.tpl")}"
   vars = {
     db_username      = var.MYSQL_USERNAME
     db_user_password = var.MYSQL_PASSWORD
     db_name          = var.MYSQL_DATABASE
     db_RDS           = aws_db_instance.wordpressdb.endpoint
+  }
+}
+data "template_file" "init" {
+  template = "${file("${path.module}/init.tpl")}"
+  vars = {
+    consul_address = "${aws_instance.consul.private_ip}"
   }
 }
 
@@ -203,7 +210,7 @@ resource "aws_instance" "wordpressec2" {
   security_groups = ["${aws_security_group.ec2_allow_rule.id}"]
   # user_data       = data.template_file.user_data.rendered
   # key_name        = aws_key_pair.mykey-pair.id
-  user_data = data.template_file.user_data.rendered
+  # user_data = data.template_file.user_data.rendered
   #babak
   key_name = var.key_name
   tags = {
