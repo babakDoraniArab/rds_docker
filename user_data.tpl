@@ -17,5 +17,4 @@ sudo yum install -y docker
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
 sudo docker build -t fixably .
-sudo docker run -e MYSQL_DATABASE=$db_name -e MYSQL_USERNAME=$db_username -e MYSQL_PASSWORD=$db_user_password -e MYSQL_HOST=$db_RDS  --name project -p 8080:80  fixably
-~                                                                                                                                                      
+sudo docker run -e MYSQL_DATABASE=$db_name -e MYSQL_USERNAME=$db_username -e MYSQL_PASSWORD=$db_user_password -e MYSQL_HOST=$db_RDS --name project -p 8080:80 fixably
